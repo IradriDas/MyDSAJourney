@@ -38,6 +38,49 @@ Node *createBinaryTree(Node *root, vector<int> preorder)
     return root;
 }
 
+/*
+    Function: levelOrderTraversal
+    Purpose : Returns the level-order (breadth-first) traversal of a binary tree
+              as a vector of vectors, where each inner vector contains the nodes
+              of one level.
+
+    Params  :
+        root → pointer to the root of the binary tree
+
+    Behavior:
+        - Uses a queue and a sentinel nullptr to mark level boundaries.
+        - Maintains a temporary 'level' vector to collect values for
+          each depth of the tree.
+        - When nullptr is encountered:
+              → push completed 'level' into bfs
+              → clear 'level'
+              → push another nullptr if more nodes remain
+
+    Output Format:
+        For a tree like:
+                1
+               / \
+              2   3
+                 / \
+                4   5
+
+        The function returns:
+            {
+                {1},
+                {2, 3},
+                {4, 5}
+            }
+
+    Time Complexity:
+        O(n) — every node is processed once.
+
+    Space Complexity:
+        O(n) — queue + result storage.
+
+    Side Effects:
+        - Does not modify the tree.
+        - Uses nullptr as a level delimiter (standard BFS trick).
+*/
 vector<vector<int>> levelOrderTraversal(Node *root)
 {
     vector<vector<int>> bfs;
@@ -47,6 +90,7 @@ vector<vector<int>> levelOrderTraversal(Node *root)
     q.push(nullptr);
 
     vector<int> level;
+
     while (!q.empty())
     {
         Node *temp = q.front();
@@ -54,7 +98,6 @@ vector<vector<int>> levelOrderTraversal(Node *root)
 
         if (temp == nullptr)
         {
-            // cout << endl;
             bfs.push_back(level);
             level.clear();
 
