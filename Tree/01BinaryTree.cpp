@@ -46,6 +46,30 @@ void preOrderTraversal(Node *root)
     preOrderTraversal(root->right);
 }
 
+void inOrderTraversal(Node *root)
+{
+    if (root == nullptr)
+    {
+        return;
+    }
+
+    inOrderTraversal(root->left);
+    cout << root->val << " ";
+    inOrderTraversal(root->right);
+}
+
+void postOrderTraversal(Node *root)
+{
+    if (root == nullptr)
+    {
+        return;
+    }
+
+    postOrderTraversal(root->left);
+    postOrderTraversal(root->right);
+    cout << root->val << " ";
+}
+
 int main()
 {
     vector<int> preorder = {1, 2, -1, -1, 3, 4, -1, -1, 5, -1, -1};
@@ -53,6 +77,17 @@ int main()
     Node *root = nullptr;
     root = createBinaryTree(root, preorder);
 
+    cout << "Pre-Order Traversal: ";
     preOrderTraversal(root);
+    cout << endl;
+
+    cout << "In-Order Traversal: ";
+    inOrderTraversal(root);
+    cout << endl;
+
+    cout << "Post-Order Traversal: ";
+    postOrderTraversal(root);
+    cout << endl;
+
     return 0;
 }
