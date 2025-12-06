@@ -37,6 +37,45 @@ Node *createBinaryTree(Node *root, vector<int> preorder)
     return root;
 }
 
+/*
+    Function: height
+    Purpose : Computes the height of a binary tree.
+
+    Definition Used:
+        - Height = number of edges on the longest downward path
+          from the root to a leaf.
+        - Empty tree (root == nullptr) has height = -1.
+        - A single-node tree has height = 0.
+
+    Params  :
+        root → pointer to the root of the binary tree
+
+    Behavior:
+        - Recursively computes height of left and right subtrees.
+        - Takes the maximum of the two and adds 1 for the current node.
+
+    Example:
+        Tree:
+                1
+               / \
+              2   3
+                 /
+                4
+
+        Heights:
+            Node 4 → 0
+            Node 3 → 1
+            Node 1 → 2
+
+    Time Complexity:
+        O(n) — visits each node once.
+
+    Space Complexity:
+        O(h) — recursion stack (h = tree height).
+
+    Side Effects:
+        - None. Does not modify the tree.
+*/
 int height(Node *root)
 {
     if (root == nullptr)
