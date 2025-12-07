@@ -232,7 +232,8 @@ int main()
     cout << endl;
 
     // NOTE: nodes are allocated with `new` above. 
-    // To avoid memory leaks, add a tree destructor or traversal that deletes nodes when done.
+    // To avoid memory leaks, add a tree destructor or 
+    // traversal that deletes nodes when done.
 
     return 0;
 }
