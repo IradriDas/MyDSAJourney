@@ -10,7 +10,7 @@ public:
     Node *left;
     Node *right;
 
-    // Constructor: create a node with value `data` and null children
+    // Constructor: create a node with value 'data' and null children
     Node(int data)
     {
         this->val = data;
