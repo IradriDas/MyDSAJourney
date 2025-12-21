@@ -18,13 +18,14 @@ bool isPalindrome(string str, int start)
     }
     else
     {
-        
+        return isPalindrome(str, start + 1);
     }
 }
 
 int main()
 {
-    string str = "MADAM";
+    string str = "MAD5DAM";
 
+    cout << isPalindrome(str, 0);
     return 0;
 }
