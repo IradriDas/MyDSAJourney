@@ -32,23 +32,30 @@ using namespace std;
         - Modifies the original vector.
         - Deep recursion for very large arrays may cause stack overflow.
 */
-void reverse(vector<int> &arr, int left, int right)
+
+void reverseHelper(vector<int> &arr, int start)
 {
-    if (left >= right)
+    int n = arr.size();
+    if (start >= n / 2)
     {
         return;
     }
 
-    swap(arr[left], arr[right]);
+    swap(arr[start], arr[n-1-start]);
 
-    reverse(arr, left + 1, right - 1);
+    reverseHelper(arr, start + 1);
+}
+
+void reverse(vector<int> &arr)
+{
+    reverseHelper(arr, 0);
 }
 
 int main()
 {
     vector<int> arr = {1, 2, 3, 4, 5, 6};
 
-    reverse(arr, 0, arr.size() - 1);
+    reverse(arr);
 
     cout << "Reversed Array: ";
     for (auto &&i : arr)
